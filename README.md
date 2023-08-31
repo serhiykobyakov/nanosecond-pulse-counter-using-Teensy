@@ -7,7 +7,9 @@ There is a need for short TTL pulses counter with the following requirements:
 * counter must release warning sound when measuring signal exceed certain allowed value
 * communication with PC via USB port
 
-## One step at a time
+## Step by step implementation
+
+### Project scoping
 
 OK, let's clarify the numbers:
 

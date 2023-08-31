@@ -9,7 +9,7 @@ There is a need for short TTL pulses counter with the following requirements:
 
 OK, let's clarify the numbers:
 
-Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT which is actually preamplifier-discriminator):
+Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT, which is actually preamplifier-discriminator (shame, Hamamatsu, shame!)):
 
 - 5V TTL
 - single pulse width 10 ns

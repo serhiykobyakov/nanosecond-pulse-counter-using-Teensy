@@ -7,6 +7,8 @@ There is a need for short TTL pulses counter with the following requirements:
 * counter must release warning sound when measuring signal exceed certain allowed value
 * communication with PC via USB port
 
+## One step at a time
+
 OK, let's clarify the numbers:
 
 Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT, which is actually preamplifier-discriminator (shame, Hamamatsu, shame!)):

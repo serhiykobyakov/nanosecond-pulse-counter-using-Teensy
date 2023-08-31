@@ -7,6 +7,12 @@ There is a need for short TTL pulses counter with the following requirements:
 * counter must release warning sound when measuring signal exceed certain allowed value
 * communication with PC via USB port
 
+OK, let's clarify the numbers:
 
+Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT which is actually preamplifier-discriminator):
+
+- 5V TTL
+- single pulse width 10 ns
+- max pulse repetition (linear range) 4·10<sup>6</sup> pulses per second
 
 ![Alt Text](https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png)

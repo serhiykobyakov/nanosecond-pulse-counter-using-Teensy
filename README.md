@@ -13,6 +13,8 @@ Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT which is actu
 
 - 5V TTL
 - single pulse width 10 ns
-- max pulse repetition (linear range) 4·10<sup>6</sup> pulses per second
+- max pulse repetition (linear range): 4·10<sup>6</sup> pulses per second
+
+  
 
 ![Alt Text](https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png)

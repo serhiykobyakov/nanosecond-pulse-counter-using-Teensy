@@ -31,7 +31,10 @@ To let the device emit sound 5V buzzer is used, powered by 5V from USB line and 
 
 The final circuit:
 
-<img src="https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png" alt="drawing" width="600"/>
+<img src="https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png" alt="The circuit" width="600"/>
 
+The device assembled (sorry for poor aesthetic, I'm not an electronics engineer...):
+
+<img src="https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/counter_photo.png" alt="The device assembled" width="600"/>
 
 

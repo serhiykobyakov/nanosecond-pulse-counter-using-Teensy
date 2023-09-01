@@ -30,7 +30,7 @@ Teensy 4.0 have 3.3V design and 5V pulses are too high for it to be tolarated, s
 To let the device emit sound 5V buzzer is used, powered by 5V from USB line and drived by low switching voltage [IRLB3034 n-channel MOSFET](https://www.infineon.com/cms/en/product/power/mosfet/n-channel/irlb3034/)
 
 The final circuit:
+<img src="[drawing.jpg](https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png)" alt="drawing" width="600"/>
 
-![Alt Text](https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png)
 
 

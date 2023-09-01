@@ -35,6 +35,6 @@ The final circuit:
 
 The device assembled (sorry for poor aesthetic, I'm not an electronics engineer...):
 
-<img src="https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/counter_photo.png" width="800"/>
+<img src="https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/counter_photo.jpg" width="800"/>
 
 

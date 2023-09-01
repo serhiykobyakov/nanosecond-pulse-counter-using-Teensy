@@ -19,6 +19,12 @@ Input signal is (according to Hamamatsu C9744 PHOTON COUNTING UNIT, which is act
 - single pulse width 10 ns
 - max pulse repetition (linear range): 4·10<sup>6</sup> pulses per second
 
+### The device design
+
+First idea was to get a fast Arduino to count pulses and it was good since it is relatively simple in realization and cheap enough for the device to get born. Let's go bold and get the fastest - Teensy 4.0. And what's more, [frequency counter is already in stock](https://www.pjrc.com/teensy/td_libs_FreqCount.html).
+
+Teensy 4.0 have 3.3V design and 5V pulses are too high to be tolarated, so level shifter is necessary. I've been advised to use [74LVC2G17](https://www.ti.com/product/SN74LVC2G17) for that purpose.
+
   
 
 ![Alt Text](https://github.com/serhiykobyakov/nanosecond-pulse-counter-using-Teensy/blob/main/circuit.png)

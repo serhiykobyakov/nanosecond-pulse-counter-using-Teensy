@@ -2,12 +2,11 @@
 // Short pulse counter for photon counting using Teensy 4.0
 //
 // (c) Serhiy Kobyakov
-// version 2023-09-01
+// version 2023-09-04
 //
 // info page: https://www.pjrc.com/teensy/td_libs_FreqCount.html
 // newest source files found: https://github.com/PaulStoffregen/FreqCount
 //
-
 
 #include <arm_math.h>
 #include <FreqCount.h>
@@ -22,17 +21,20 @@ extern "C" uint32_t set_arm_clock(uint32_t frequency);
 #define FreqInputPin 9
 
 
-unsigned long last_cps_read;   // timestamp for last signal reading
+unsigned long last_cps_read;                   // timestamp for last signal reading
 unsigned long signal_check_interval_ms = 2600; // interval for idle sinal checking in ms
-double max_pm_cps = 1000000.0; // max cps after which the photomultiplier exceeds it's linear range
-double max_cps = 4000000.0;    // max cps after which the preamplifier-discriminator exceeds it's linear range
 
-double meas_interval = 0.4;       // variable for default measuring interval value
+double pre_max_cps = 3500000.0;                // cps value close to maximum value
+double max_cps = 4000000.0;                    // max cps after which preamplifier exceeds it's linear range
+
+double meas_interval = 0.4;                    // variable for default measuring interval value
 //double a0 = 0.000001676145;
 //double a1 = 1.000016;
 
 unsigned long counts = 0;      // variable for pulses read
 double cps = 0.0;              // variable for the final result: counts per second
+
+unsigned int a_counter = 0;    // auxiliary variable, must be removed after testing
 
 
 void beepn(int times) {
@@ -71,20 +73,25 @@ double get_cps(float expo) {
 // get cps value from device (counts per second)
   
   FreqCount.begin(getGateInterval(expo));
+  unsigned int start_reading_timestamp = millis();
+  bool data_read = false;
   counts = 0;
-  while (counts <= 0.0) {
+  
+  while ((data_read == false) || (millis() > start_reading_timestamp + (unsigned long) (1100 * expo))) {
     if (FreqCount.available()) {
       counts = FreqCount.read();
       cps = (double) counts / expo;
+      data_read = true;
     }
   }
+  
   FreqCount.end();
   last_cps_read = millis();
 
-// make warning sound if the signal is higher than max_cps value
+// make warning sound if the signal is higher than pre_max_cps value
   unsigned int signal_duration = 0;
-  if (cps < max_pm_cps) signal_duration = 0;
-  else if ((cps >= max_pm_cps) && (cps < max_cps)) signal_duration = (unsigned int) (signal_check_interval_ms - 100) * (cps - max_pm_cps) / max_cps + 100;
+  if (cps < pre_max_cps) signal_duration = 0;
+  else if ((cps >= pre_max_cps) && (cps < max_cps)) signal_duration = (unsigned int) (signal_check_interval_ms - 100) * (cps - pre_max_cps) / (max_cps - pre_max_cps) + 100;
   else signal_duration = signal_check_interval_ms;
 
   if (signal_duration > 0) {
@@ -168,26 +175,24 @@ void loop() {
 
       case 'R':  // make 500 readings and send it via Serial
                  // for testing purpouses only, will be removed later
-          unsigned int counter = 0;
-          while (counter <= 500) {
+          a_counter = 0;
+          while (a_counter <= 500) {
             Serial.println(get_cps(meas_interval), get_prn_prec());
 //            Serial.println(get_counts(meas_interval));
             delay(300);
-            counter++;
+            a_counter++;
           }
           break;
 
-      case 'e':  // set default measuring interval
+      case 'e':  // set default measuring interval (exposition)
+                 // and return it's actual value
+                 // if wrong value has been provided as input - there will be no changes
+                 // and still the actual value of measuring interval will be returned
           delay(5);
           if (Serial.available()) {
             String newstr = Serial.readString();
             double newexp = newstr.trim().toFloat();
             if (newexp != 0.0) set_meas_interval(newexp);
-            else {
-              beepn(3);
-//              Serial.print("wrong value for measuring interval: ");
-//              Serial.println(newstr);
-            }
           }
           Serial.println(meas_interval);
           break;

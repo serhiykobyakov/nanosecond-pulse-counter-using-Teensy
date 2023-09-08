@@ -13,7 +13,7 @@ The last demand needs some explanations. When dealing with photomultipliers one 
 
 ### Project scoping
 
-OK, let's clarify the numbers:
+OK, let's check the numbers:
 
 Input signal is (according to Hamamatsu [C9744 photon counting unit](https://www.hamamatsu.com/us/en/product/optical-sensors/pmt/accessory-for-pmt/photon-counting-unit/C9744.html), which is actually preamplifier-discriminator (shame, Hamamatsu, shame!)):
 

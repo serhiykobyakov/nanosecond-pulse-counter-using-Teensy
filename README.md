@@ -1,5 +1,6 @@
 # Short pulse counter for photon counting using Teensy 4.0
 
+
 ## Goal
 There is a need for short TTL pulses counter with the following requirements:
 * input: 5V, 10ns wide square pulses, there are already established signal line using BNC cable from amplifier-discriminator to receiver (receiver has 50 Ohm input)

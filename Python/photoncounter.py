@@ -8,8 +8,10 @@ from arduino_device import ArduinoDevice
 
 
 class PhotonCounter(ArduinoDevice):
-    """ New Arduino device class template """
-    # define the device name:
+    """
+    New Arduino device class template
+    """
+    # define the device name
     # this is the string with which the device responds to b'?' query
     _device_name = "PhotonCounter"
 
